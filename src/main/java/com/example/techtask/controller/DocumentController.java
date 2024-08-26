@@ -18,19 +18,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("api/v1")
 public class DocumentController {
-  @Autowired
-  private DocumentRepository repo;
   private CrptApi docService;
 
-  public DocumentController(DocumentRepository rep)
+  public DocumentController()
   {
-    repo = rep;
-    docService = new CrptApi(repo, TimeUnit.MINUTES, 3);
+    docService = new CrptApi(TimeUnit.MINUTES, 3);
   }
 
   @PostMapping("create-document")
   public void postMethodName(@RequestBody Document doc, @RequestParam String signature) {
-    Logger.getAnonymousLogger().info("receved");
     docService.CreateDocument(doc);
   }
 }
