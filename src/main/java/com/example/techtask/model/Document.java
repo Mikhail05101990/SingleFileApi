@@ -18,29 +18,29 @@ import java.sql.Date;
 @NoArgsConstructor
 public class Document {
   @Column(name = "id")
-  @Id public BigInteger Id;
+  @Id public BigInteger id;
   @Column(name = "doc_id")
-  public String DocumentId;
+  public String doc_id;
   @Column(name = "doc_status")
-  public String Status;
+  public String doc_status;
   @Column(name = "doc_type")
-  public String DocumentType;
+  public String doc_type;
   @Column(name = "descr_id")
   public BigInteger DescriptionId;
   @Column(name = "import_request")
-  public Boolean ImportRequest;
+  public Boolean importRequest;
   @Column(name = "owner_inn")
-  public String OwnerInn;
+  public String owner_inn;
   @Column(name = "participant_inn")
-  public String ParticipantInn;
+  public String participant_inn;
   @Column(name = "producer_inn")
-  public String ProducerInn;
+  public String producer_inn;
   @Column(name = "production_type")
-  public String ProductionType;
+  public String production_type;
   @Column(name = "production_date")
-  public Date ProductionDate;
+  public Date production_date;
   @Column(name = "reg_date")
-  public Date RegistrationDate;
+  public Date reg_date;
   @Column(name = "reg_number")
-  public String RegistrationNumber;
+  public String reg_number;
 }

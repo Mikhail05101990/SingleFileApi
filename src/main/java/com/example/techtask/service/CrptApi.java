@@ -117,23 +117,22 @@ public class CrptApi {
                 Class.forName("org.postgresql.Driver");
                 Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
                 
-                String sql = "INSERT INTO documents(id, doc_id, doc_status, doc_type, descr_id, import_request"
+                String sql = "INSERT INTO documents(doc_id, doc_status, doc_type, descr_id, import_request"
                     .concat(", owner_inn, participant_inn, producer_inn, production_type, production_date, reg_date")
-                    .concat(", reg_number) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    .concat(", reg_number) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setLong(1, doc.Id.longValue());
-                preparedStatement.setString(2, doc.DocumentId);
-                preparedStatement.setString(3, doc.Status);
-                preparedStatement.setString(4, doc.DocumentType);
-                preparedStatement.setLong(5, doc.DescriptionId.longValue());
-                preparedStatement.setBoolean(6, doc.ImportRequest);
-                preparedStatement.setString(7, doc.OwnerInn);
-                preparedStatement.setString(8, doc.ParticipantInn);
-                preparedStatement.setString(9, doc.ProducerInn);
-                preparedStatement.setString(10, doc.ProductionType);
-                preparedStatement.setDate(11, doc.ProductionDate);
-                preparedStatement.setDate(12, doc.RegistrationDate);
-                preparedStatement.setString(13, doc.RegistrationNumber);
+                preparedStatement.setString(1, doc.doc_id);
+                preparedStatement.setString(2, doc.doc_status);
+                preparedStatement.setString(3, doc.doc_type);
+                preparedStatement.setLong(4, doc.DescriptionId != null ? doc.DescriptionId.longValue() : 1);
+                preparedStatement.setBoolean(5, doc.importRequest);
+                preparedStatement.setString(6, doc.owner_inn);
+                preparedStatement.setString(7, doc.participant_inn);
+                preparedStatement.setString(8, doc.producer_inn);
+                preparedStatement.setString(9, doc.production_type);
+                preparedStatement.setDate(10, doc.production_date);
+                preparedStatement.setDate(11, doc.reg_date);
+                preparedStatement.setString(12, doc.reg_number);
                 preparedStatement.executeUpdate();
                 
                 connection.close();
